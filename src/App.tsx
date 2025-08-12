@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Layout from './components/layout/Layout';
 import Dashboard from './components/dashboard/Dashboard';
-import { BagDashboard, HatDashboard, KeychainsDashboard, MugDashboard } from './components/dashboard/ProductDashboards';
 import { Toaster } from 'sonner';
+import Products from './components/dashboard/Products';
 
 
 function App() {
@@ -13,13 +13,13 @@ function App() {
       case 'dashboard':
         return <Dashboard />;
       case 'products-hat':
-        return <HatDashboard />;
+        return <Products categoryName="Hat" />;
       case 'products-mug':
-        return <MugDashboard />;
+        return <Products categoryName="Mug" />;
       case 'products-keychains':
-        return <KeychainsDashboard />;
+        return <Products categoryName="Keychains" />;
       case 'products-bag':
-        return <BagDashboard />;
+        return <Products categoryName="Bag" />;
       default:
         return <Dashboard />;
     }

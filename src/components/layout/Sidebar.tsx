@@ -113,10 +113,6 @@ const Sidebar: React.FC<SidebarProps> = ({
     );
   };
 
-  const handleProfileClick = () => {
-    console.log("Profile clicked");
-  };
-
   const NavItemComponent = ({ item }: { item: NavItem }) => {
     const isActive =
       activeItem === item.href ||
