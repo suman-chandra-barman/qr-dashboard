@@ -75,7 +75,7 @@ const generalNavItems: NavItem[] = [
   {
     title: "Product Uploads",
     icon: Upload,
-    href: "uploads",
+    href: "product-uploads",
   },
   {
     title: "Transactions",

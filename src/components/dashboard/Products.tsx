@@ -1,10 +1,9 @@
 "use client"
-import { Search, Trash2, MoreHorizontal, ChevronLeft, ChevronRight } from "lucide-react"
+import { Search, Trash2, ChevronLeft, ChevronRight, } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { cn } from "@/lib/utils"
 import { useEffect, useState } from "react"
@@ -151,7 +150,7 @@ const categories = [
   { name: "Keychains", count: 121, active: false },
   { name: "Bag", count: 21, active: false },
 ]
-const Products = ({categoryName}:{categoryName:string})=> {
+const Products = ({categoryName, onItemClick}:{categoryName:string, onItemClick: (item: string) => void })=> {
   const [selectedCategory, setSelectedCategory] = useState("Hat")
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedProducts, setSelectedProducts] = useState<string[]>([])
@@ -239,7 +238,10 @@ const Products = ({categoryName}:{categoryName:string})=> {
                 {categories.map((category) => (
                   <button
                     key={category.name}
-                    onClick={() => setSelectedCategory(category.name)}
+                    onClick={() =>{
+                       setSelectedCategory(category.name)
+                       onItemClick(`products-${category.name.toLowerCase()}`)
+                    }}
                     className={cn(
                       "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
                       selectedCategory === category.name
@@ -320,20 +322,7 @@ const Products = ({categoryName}:{categoryName:string})=> {
                         </Badge>
                       </td>
                       <td className="px-6 py-4">
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="sm">
-                              <MoreHorizontal className="w-4 h-4" />
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem>Edit</DropdownMenuItem>
-                            <DropdownMenuItem>View Details</DropdownMenuItem>
-                            <DropdownMenuItem className="text-red-600" onClick={() => handleDeleteProduct(product.id)}>
-                              Delete
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
+                        <Trash2 size={16} onClick={() => handleDeleteProduct(product.id)} />
                       </td>
                     </tr>
                   ))}
