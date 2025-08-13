@@ -20,7 +20,7 @@ export function ProductCard({ id, name, price, image, onClick, className }: Prod
           <img
             src={image || "/placeholder.svg?height=200&width=200&query=product"}
             alt={name}
-            className="w-[90%] h-[90%] group-hover:scale-105 transition-transform duration-200"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
           />
         </div>
         <div className="space-y-1">
