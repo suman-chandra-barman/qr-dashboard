@@ -1,5 +1,4 @@
-"use client";
-import { Search, Trash2, ChevronLeft, ChevronRight, ChevronUp, ArrowDown, ChevronDown } from "lucide-react";
+import { Search, Trash2, ChevronLeft, ChevronRight, ChevronUp, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";

@@ -1,20 +1,21 @@
-import App from "@/App";
-import CustomerDashboard from "@/components/dashboard/CustomerDeshboard";
-import Dashboard from "@/components/dashboard/Dashboard";
-import ProductUploads from "@/components/dashboard/ProductUploads";
-import { ChangePasswordModal } from "@/components/setting/ChangePasswordModal";
-import EditPersonalInformation from "@/components/setting/EditPersonalInformation";
-import PersonalInformation from "@/components/setting/PersonalInformation";
-import AboutUsPage from "@/pages/AboutUs";
-import SettingsPage from "@/pages/AccoutAndSetting";
-import EditAboutUsPage from "@/pages/EditAboutUs";
-import EditPrivacyPolicyPage from "@/pages/EditPrivacyPolicy";
-import EditTermsCondition from "@/pages/EditTermsCondition";
-import NotFound from "@/pages/NotFound";
-import PrivacyPolicyPage from "@/pages/PrivacyPolicy";
-import SignInPage from "@/pages/SigninPage";
-import TermsCondition from "@/pages/TermsCondition";
-import { createBrowserRouter } from "react-router-dom";
+import App from "@/App"
+import CustomerDashboard from "@/components/dashboard/CustomerDeshboard"
+import Dashboard from "@/components/dashboard/Dashboard"
+import Products from "@/components/dashboard/Products"
+import ProductUploads from "@/components/dashboard/ProductUploads"
+import { ChangePasswordModal } from "@/components/setting/ChangePasswordModal"
+import EditPersonalInformation from "@/components/setting/EditPersonalInformation"
+import PersonalInformation from "@/components/setting/PersonalInformation"
+import AboutUsPage from "@/pages/AboutUs"
+import SettingsPage from "@/pages/AccoutAndSetting"
+import EditAboutUsPage from "@/pages/EditAboutUs"
+import EditPrivacyPolicyPage from "@/pages/EditPrivacyPolicy"
+import EditTermsCondition from "@/pages/EditTermsCondition"
+import NotFound from "@/pages/NotFound"
+import PrivacyPolicyPage from "@/pages/PrivacyPolicy"
+import SignInPage from "@/pages/SigninPage"
+import TermsCondition from "@/pages/TermsCondition"
+import { createBrowserRouter } from "react-router-dom"
 
 const router = createBrowserRouter([
   {
@@ -62,7 +63,6 @@ const router = createBrowserRouter([
         path: "/settings/terms-condition/edit",
         element: <EditTermsCondition />,
       },
-
       {
         path: "/settings/privacy-policy",
         element: <PrivacyPolicyPage />,
@@ -72,10 +72,6 @@ const router = createBrowserRouter([
         element: <EditPrivacyPolicyPage />,
       },
       {
-        path: "/settings/terms-condition/edit",
-        element: <EditTermsCondition />,
-      },
-      {
         path: "/settings/about-us",
         element: <AboutUsPage />,
       },
@@ -83,13 +79,20 @@ const router = createBrowserRouter([
         path: "/settings/about-us/edit",
         element: <EditAboutUsPage />,
       },
+      {
+        path: "/products",
+        element: <Products categoryName="all" onItemClick={() => {}} />,
+      },
+      {
+        path: "/products/:category",
+        element: <Products categoryName="" onItemClick={() => {}} />,
+      },
     ],
   },
-
   {
     path: "signin",
     element: <SignInPage />,
   },
-]);
+])
 
-export default router;
+export default router

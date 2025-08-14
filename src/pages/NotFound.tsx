@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NotFound: React.FC = () => (
   <div className="flex items-center justify-center min-h-screen bg-gray-100">
-    <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+    <div className="text-center px-6 py-10 bg-white rounded-lg shadow-lg">
       <h1 className="text-6xl font-bold text-red-600">404</h1>
       <p className="text-lg text-gray-600 mt-2">
         Sorry, the page you visited does not exist.
