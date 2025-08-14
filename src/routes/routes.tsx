@@ -12,6 +12,7 @@ import EditPrivacyPolicyPage from "@/pages/EditPrivacyPolicy";
 import EditTermsCondition from "@/pages/EditTermsCondition";
 import NotFound from "@/pages/NotFound";
 import PrivacyPolicyPage from "@/pages/PrivacyPolicy";
+import SignInPage from "@/pages/SigninPage";
 import TermsCondition from "@/pages/TermsCondition";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -81,8 +82,13 @@ const router = createBrowserRouter([
       {
         path: "/settings/about-us/edit",
         element: <EditAboutUsPage />,
-      }
+      },
     ],
+  },
+
+  {
+    path: "signin",
+    element: <SignInPage />,
   },
 ]);
 
