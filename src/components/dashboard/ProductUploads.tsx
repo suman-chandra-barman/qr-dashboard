@@ -77,6 +77,7 @@ const productData: TProduct[] = [
 ];
 
 const ProductUploads = () => {
+  console.log("hi");
   const [searchQuery, setSearchQuery] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
 

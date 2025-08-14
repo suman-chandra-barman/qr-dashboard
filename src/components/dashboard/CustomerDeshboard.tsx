@@ -8,8 +8,8 @@ import {
   ChevronLeft,
   ChevronRight,
   ChevronUp,
-  ArrowDown,
   Edit,
+  ChevronDown,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -226,7 +226,7 @@ export default function CustomerDashboard() {
                               purchasesSort === "asc" ? "text-blue-600" : "text-gray-400"
                             }`}
                           >
-                            <ArrowDown className="w-3 h-3" />
+                            <ChevronDown className="w-3 h-3" />
                           </button>
                         </div>
                       </div>
