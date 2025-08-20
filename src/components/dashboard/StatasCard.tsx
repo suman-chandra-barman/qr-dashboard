@@ -8,6 +8,7 @@ interface StatCardProps {
   change: string;
   trend: "up" | "down";
   subtitle?: string;
+  className?: string;
 }
 
 const StatCard: React.FC<StatCardProps> = ({
@@ -16,17 +17,18 @@ const StatCard: React.FC<StatCardProps> = ({
   change,
   trend,
   subtitle,
+  className,
 }) => {
   return (
-    <Card className="hover:shadow-md transition-shadow justify-between">
+    <Card className={`${className}`}>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium text-muted-foreground">
+        <CardTitle className={`text-sm font-medium ${title === "Total Product" ? "text-white" : "text-muted-foreground"}`}>
           {title}
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex justify-between items-center">
-          <div className="text-2xl font-bold">{value}</div>
+          <div className={`text-2xl font-bold ${title === "Total Product" ? "text-white" : "text-gray-900"}`}>${value}</div>
           <div className="text-sm mt-1">
             <div className="flex items-center gap-1 justify-end">
               {trend === "up" ? (
@@ -41,7 +43,7 @@ const StatCard: React.FC<StatCardProps> = ({
               </span>
             </div>
             {subtitle && (
-              <p className="text-muted-foreground ml-1 text-end">{subtitle}</p>
+              <p className={`text-muted-foreground ml-1 text-end ${title === "Total Product" ? "text-[#F6F6F6]" : "text-muted-foreground"}`}>{subtitle}</p>
             )}
           </div>
         </div>
@@ -54,11 +56,12 @@ const StatsCards: React.FC = () => {
   return (
     <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
       <StatCard
-        title="Total Revenue"
-        value="$81,000"
-        change="+2.5%"
-        trend="up"
+        title="Total Product"
+        value="5,000"
+        change="-1.1%"
+        trend="down"
         subtitle="from last week"
+        className="hover:shadow-md transition-shadow justify-between bg-[#003366FC]"
       />
       <StatCard
         title="Total Customer"
@@ -66,20 +69,7 @@ const StatsCards: React.FC = () => {
         change="+1.6%"
         trend="up"
         subtitle="from last week"
-      />
-      <StatCard
-        title="Total Transactions"
-        value="12,000"
-        change="+6.8%"
-        trend="up"
-        subtitle="from last week"
-      />
-      <StatCard
-        title="Total Product"
-        value="5,000"
-        change="-1.1%"
-        trend="down"
-        subtitle="from last week"
+        className="hover:shadow-md transition-shadow justify-between"
       />
     </div>
   );
