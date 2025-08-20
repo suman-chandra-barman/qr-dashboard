@@ -11,6 +11,7 @@ import SettingsPage from "@/pages/AccoutAndSetting"
 import EditAboutUsPage from "@/pages/EditAboutUs"
 import EditPrivacyPolicyPage from "@/pages/EditPrivacyPolicy"
 import EditTermsCondition from "@/pages/EditTermsCondition"
+import ForgotPasswordPage from "@/pages/FotgotPasswordPage"
 import NotFound from "@/pages/NotFound"
 import PrivacyPolicyPage from "@/pages/PrivacyPolicy"
 import SignInPage from "@/pages/SigninPage"
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
   {
     path: "signin",
     element: <SignInPage />,
+  },
+  {
+    path: "forgot-password",
+    element: <ForgotPasswordPage />,
   },
 ])
 

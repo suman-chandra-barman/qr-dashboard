@@ -24,10 +24,12 @@ const signInSchema = z.object({
   rememberMe: z.boolean().default(false),
 });
 
+type TSignInFormData = z.infer<typeof signInSchema>;
+
 export default function SignInPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
-    const navigate = useNavigate();
+  // const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
+  const navigate = useNavigate();
 
   const form = useForm({
     resolver: zodResolver(signInSchema),
@@ -38,19 +40,24 @@ export default function SignInPage() {
     },
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: TSignInFormData) => {
     try {
       console.log("Sign in data:", data);
-      // Show success toast using Sonner
+      // Perform sign in logic here
+
+      form.reset();
       toast.success("You have been signed in successfully!");
     } catch (error) {
       // Show error toast using Sonner
       toast.error("Failed to sign in. Please check your credentials.");
     }
   };
-
-   const handleBack = () => {
-    navigate('/');
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
   };
 
   return (
@@ -75,7 +82,12 @@ export default function SignInPage() {
           <div className="bg-white rounded-2xl shadow-lg p-8">
             {/* Header */}
             <div className="flex items-center mb-8">
-              <Button variant="ghost" size="sm" className="p-0 h-auto mr-3" onClick={handleBack}>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="p-0 h-auto mr-3"
+                onClick={handleBack}
+              >
                 <ArrowLeft className="h-5 w-5" />
               </Button>
               <h1 className="text-2xl font-semibold text-gray-900">Sign In</h1>
@@ -98,7 +110,7 @@ export default function SignInPage() {
                             {...field}
                             type="email"
                             placeholder="Enter your email..."
-                            className="pl-10 h-12 bg-gray-50 border-gray-200 rounded-xl focus:bg-white"
+                            className="pl-10 h-12 bg-gray-50 border-gray-200 rounded-full focus:bg-white"
                           />
                         </div>
                       </FormControl>
@@ -120,7 +132,7 @@ export default function SignInPage() {
                             {...field}
                             type={showPassword ? "text" : "password"}
                             placeholder="Enter Password"
-                            className="pl-10 pr-10 h-12 bg-gray-50 border-gray-200 rounded-xl focus:bg-white"
+                            className="pl-10 pr-10 h-12 bg-gray-50 border-gray-200 rounded-full focus:bg-white"
                           />
                           <Button
                             type="button"
@@ -164,46 +176,36 @@ export default function SignInPage() {
                     )}
                   />
 
-                  <Button
-                    type="button"
-                    variant="link"
-                    className="p-0 h-auto text-blue-600 hover:text-blue-700"
-                    onClick={() => setIsForgotPasswordOpen(true)}
-                  >
-                    Forgot password?
-                  </Button>
+                  <Link to="/forgot-password">
+                    <Button
+                      type="button"
+                      variant="link"
+                      className="p-0 h-auto text-blue-600 hover:text-blue-700"
+                    >
+                      Forgot password?
+                    </Button>
+                  </Link>
                 </div>
 
                 {/* Sign In Button */}
                 <Button
                   type="submit"
-                  className="w-full h-12 bg-yellow-400 hover:bg-yellow-500 text-black font-medium rounded-xl"
+                  className="w-full h-12 bg-yellow-400 hover:bg-yellow-500 text-black font-medium rounded-full"
                   disabled={form.formState.isSubmitting}
                 >
                   {form.formState.isSubmitting ? "Signing In..." : "Sign In"}
                 </Button>
-
-                {/* Sign Up Link */}
-                <div className="text-center text-sm text-gray-600">
-                  Don't have an account?{" "}
-                  <Link
-                    to="/signup"
-                    className="text-blue-600 hover:text-blue-700 font-medium"
-                  >
-                    Sign Up
-                  </Link>
-                </div>
               </form>
             </Form>
           </div>
         </div>
       </div>
 
-      {/* Forgot Password Modal */}
+      {/* Forgot Password Modal
       <ForgotPasswordModal
         open={isForgotPasswordOpen}
         onOpenChange={setIsForgotPasswordOpen}
-      />
+      /> */}
     </div>
   );
 }
