@@ -13,7 +13,9 @@ import EditPrivacyPolicyPage from "@/pages/EditPrivacyPolicy"
 import EditTermsCondition from "@/pages/EditTermsCondition"
 import ForgotPasswordPage from "@/pages/FotgotPasswordPage"
 import NotFound from "@/pages/NotFound"
+import OTPVerificationPage from "@/pages/OTPVerificationPage"
 import PrivacyPolicyPage from "@/pages/PrivacyPolicy"
+import { ResetPasswordPage } from "@/pages/ResetPasswordPage"
 import SignInPage from "@/pages/SigninPage"
 import TermsCondition from "@/pages/TermsCondition"
 import { createBrowserRouter } from "react-router-dom"
@@ -97,6 +99,14 @@ const router = createBrowserRouter([
   {
     path: "forgot-password",
     element: <ForgotPasswordPage />,
+  },
+  {
+    path: "otp-verification",
+    element: <OTPVerificationPage />,
+  },
+  {
+    path: "reset-password",
+    element: <ResetPasswordPage />,
   },
 ])
 

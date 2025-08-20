@@ -36,6 +36,7 @@ export default function ForgotPasswordPage() {
       console.log("Forgot Password data:", data);
       // Perform Forgot Password logic here
 
+      navigate("/otp-verification", { state: { email: data.email } });
       form.reset();
       toast.success("OTP Send successfully!");
     } catch (error) {

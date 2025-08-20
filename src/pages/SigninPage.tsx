@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router";
-import { ForgotPasswordModal } from "@/components/setting/ForgotPasswordModal";
 import { Checkbox } from "@/components/ui/checkbox";
 import signinImage from "@/assets/signin.png";
 
