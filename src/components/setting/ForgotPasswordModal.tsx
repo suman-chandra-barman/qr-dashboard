@@ -1,58 +1,68 @@
-"use client"
-
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import { ArrowLeft, Mail } from "lucide-react"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { toast } from "sonner"
-import { OTPVerificationModal } from "./OTPVerificationModal"
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { ArrowLeft, Mail } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { toast } from "sonner";
+import { OTPVerificationModal } from "./OTPVerificationModal";
 
 const forgotPasswordSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
-})
+});
 
-type ForgotPasswordForm = z.infer<typeof forgotPasswordSchema>
+type ForgotPasswordForm = z.infer<typeof forgotPasswordSchema>;
 
 interface ForgotPasswordModalProps {
-  open: boolean
-  onOpenChange: (open: boolean) => void
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
-export function ForgotPasswordModal({ open, onOpenChange }: ForgotPasswordModalProps) {
-  const [showOTPModal, setShowOTPModal] = useState(false)
-  const [userEmail, setUserEmail] = useState("")
+export function ForgotPasswordModal({
+  open,
+  onOpenChange,
+}: ForgotPasswordModalProps) {
+  const [showOTPModal, setShowOTPModal] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
 
   const form = useForm<ForgotPasswordForm>({
     resolver: zodResolver(forgotPasswordSchema),
     defaultValues: {
       email: "",
     },
-  })
+  });
 
   const onSubmit = async (data: ForgotPasswordForm) => {
     try {
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      setUserEmail(data.email)
-      onOpenChange(false)
-      setShowOTPModal(true)
+      setUserEmail(data.email);
+      onOpenChange(false);
+      setShowOTPModal(true);
+
+      console.log("Forgot password data:", data);
 
       toast.success("OTP Sent", {
         description: "We've sent a verification code to your email.",
-      })
+      });
     } catch (error) {
       toast.error("Failed to send OTP. Please try again.", {
         description: "Error",
         duration: 5000,
-      })
+      });
     }
-  }
+  };
 
   return (
     <>
@@ -61,22 +71,36 @@ export function ForgotPasswordModal({ open, onOpenChange }: ForgotPasswordModalP
           <div className="p-6">
             {/* Header */}
             <div className="flex items-center gap-3 mb-6">
-              <Button variant="ghost" size="sm" className="p-0 h-auto" onClick={() => onOpenChange(false)}>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="p-0 h-auto"
+                onClick={() => onOpenChange(false)}
+              >
                 <ArrowLeft className="h-5 w-5" />
               </Button>
-              <h2 className="text-xl font-semibold text-gray-900">Forgot Password</h2>
+              <DialogTitle className="text-xl font-semibold text-gray-900">
+                Forgot Password
+              </DialogTitle>
             </div>
 
-            <p className="text-gray-600 mb-6">Please enter your email address to reset your password</p>
+            <p className="text-gray-600 mb-6">
+              Please enter your email address to reset your password
+            </p>
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
                 <FormField
                   control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-gray-700 font-medium">Enter Your Email</FormLabel>
+                      <FormLabel className="text-gray-700 font-medium">
+                        Enter Your Email
+                      </FormLabel>
                       <FormControl>
                         <div className="relative">
                           <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
@@ -108,7 +132,11 @@ export function ForgotPasswordModal({ open, onOpenChange }: ForgotPasswordModalP
         </DialogContent>
       </Dialog>
 
-      <OTPVerificationModal open={showOTPModal} onOpenChange={setShowOTPModal} email={userEmail} />
+      <OTPVerificationModal
+        open={showOTPModal}
+        onOpenChange={setShowOTPModal}
+        email={userEmail}
+      />
     </>
-  )
+  );
 }
