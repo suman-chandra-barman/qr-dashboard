@@ -2,7 +2,7 @@ import App from "@/App"
 import CustomerDashboard from "@/components/dashboard/CustomerDeshboard"
 import Dashboard from "@/components/dashboard/Dashboard"
 import Products from "@/components/dashboard/Products"
-import ProductUploads from "@/components/dashboard/ProductUploads"
+import ProductUploads from "@/components/dashboard/Categories"
 import { ChangePasswordModal } from "@/components/setting/ChangePasswordModal"
 import EditPersonalInformation from "@/components/setting/EditPersonalInformation"
 import PersonalInformation from "@/components/setting/PersonalInformation"
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "/product-uploads",
+        path: "/categories",
         element: <ProductUploads />,
       },
       {
