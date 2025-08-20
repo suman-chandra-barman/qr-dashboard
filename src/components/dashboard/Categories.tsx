@@ -76,7 +76,7 @@ const productData: TProduct[] = [
   },
 ];
 
-const ProductUploads = () => {
+const Categories = () => {
   console.log("hi");
   const [searchQuery, setSearchQuery] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
@@ -144,4 +144,4 @@ const ProductUploads = () => {
   );
 };
 
-export default ProductUploads;
+export default Categories;
