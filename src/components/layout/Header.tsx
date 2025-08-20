@@ -1,24 +1,12 @@
-import React from 'react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Search, Bell } from 'lucide-react';
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Bell } from "lucide-react";
 
 const Header: React.FC = () => {
   return (
-    <header className="h-16 border-b border-border bg-background px-6 flex items-center justify-between">
-      {/* Search */}
-      <div className="flex-1 max-w-lg">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input 
-            placeholder="Search product..." 
-            className="pl-10 bg-background"
-          />
-        </div>
-      </div>
-
+    <header className="h-20 border-b border-border bg-background px-6 flex justify-end items-center gap-6">
       {/* User Section */}
       <div className="flex items-center gap-4">
         <Button variant="ghost" size="sm" className="relative">
@@ -27,13 +15,16 @@ const Header: React.FC = () => {
             1
           </Badge>
         </Button>
-        
-        <div className="flex items-center gap-3">
+
+        <div className="flex items-center gap-3 border-l-2 border-border pl-4">
           <Avatar className="h-8 w-8">
             <AvatarImage src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=32&h=32&fit=crop" />
             <AvatarFallback>GH</AvatarFallback>
           </Avatar>
-          <span className="text-sm font-medium">Guy Hawkins</span>
+          <div>
+            <span className="font-medium">Guy Hawkins</span>
+            <p className="text-sm text-muted-foreground">Admin</p>
+          </div>
         </div>
       </div>
     </header>
