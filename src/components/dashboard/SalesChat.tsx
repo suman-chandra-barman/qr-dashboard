@@ -8,7 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { ChevronDown, TrendingUp, DollarSign } from "lucide-react";
+import { ChevronDown} from "lucide-react";
 
 const salesData = [
   { month: "Jan", avgSaleValue: 280000000, avgItemsPerSale: 180000000 },
@@ -27,10 +27,6 @@ const salesData = [
 
 const formatCurrency = (value: number) => {
   return `$${(value / 1000000).toFixed(0)}M`;
-};
-
-const formatLargeCurrency = (value: number) => {
-  return `$${(value / 1000000000).toFixed(1)}B`;
 };
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -66,16 +62,6 @@ function SalesChart() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const timePeriods = ["7 days", "30 days", "90 days", "1 year"];
-
-  // Calculate totals for the metric cards
-  const totalSaleValue = salesData.reduce(
-    (sum, item) => sum + item.avgSaleValue,
-    0
-  );
-  const totalItemsPerSale = salesData.reduce(
-    (sum, item) => sum + item.avgItemsPerSale,
-    0
-  );
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
@@ -138,33 +124,6 @@ function SalesChart() {
 
       {/* Metrics Cards and Chart Container */}
       <div className="relative">
-        {/* Metrics Cards */}
-        <div className="absolute -top-4 left-4 z-10 flex gap-4">
-          <div className="bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg p-2 shadow-sm">
-            <div className="flex items-center gap-2 mb-2">
-              <TrendingUp className="w-4 h-4 text-blue-500" />
-              <span className="text-xs font-medium text-gray-600">
-                Average Item per sale
-              </span>
-            </div>
-            <p className="text-xl font-bold text-gray-900">
-              {formatLargeCurrency(totalItemsPerSale)}
-            </p>
-          </div>
-
-          <div className="bg-lime-50 border border-lime-200 rounded-lg p-2 shadow-sm">
-            <div className="flex items-center gap-2 mb-2">
-              <DollarSign className="w-4 h-4 text-lime-600" />
-              <span className="text-xs font-medium text-lime-700">
-                Average year value
-              </span>
-            </div>
-            <p className="text-xl font-bold text-lime-800">
-              {formatLargeCurrency(totalSaleValue)}
-            </p>
-          </div>
-        </div>
-
         {/* Chart */}
         <div className="h-64 mt-16">
           <ResponsiveContainer width="100%" height="100%">
