@@ -1,7 +1,6 @@
 import App from "@/App"
 import CustomerDashboard from "@/components/dashboard/CustomerDeshboard"
 import Dashboard from "@/components/dashboard/Dashboard"
-import Products from "@/components/dashboard/Products"
 import ProductUploads from "@/components/dashboard/Categories"
 import { ChangePasswordModal } from "@/components/setting/ChangePasswordModal"
 import EditPersonalInformation from "@/components/setting/EditPersonalInformation"
@@ -19,6 +18,7 @@ import { ResetPasswordPage } from "@/pages/ResetPasswordPage"
 import SignInPage from "@/pages/SigninPage"
 import TermsCondition from "@/pages/TermsCondition"
 import { createBrowserRouter } from "react-router-dom"
+import ProductsPage from "@/pages/ProductsPage"
 
 const router = createBrowserRouter([
   {
@@ -84,12 +84,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Products categoryName="all" onItemClick={() => {}} />,
-      },
-      {
-        path: "/products/:category",
-        element: <Products categoryName="" onItemClick={() => {}} />,
-      },
+        element: <ProductsPage />,
+      }
     ],
   },
   {

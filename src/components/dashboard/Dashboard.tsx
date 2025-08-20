@@ -1,7 +1,7 @@
 import React from "react";
-import OrdersTable from "./OrdersTable";
 import SalesChart from "./SalesChat";
 import StatsCards from "./StatasCard";
+import { OrdersTable } from "./OrdersTable";
 
 const Dashboard: React.FC = () => {
   return (
