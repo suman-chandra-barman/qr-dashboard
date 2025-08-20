@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, Trash2, Loader2 } from "lucide-react";
-import { toast } from "sonner";
-import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
+import { Button } from "../ui/button";
+import { ArrowUpRight , Trash2, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 import { Pagination } from "../common/Pagination";
+import { ProductDetailsModal } from "../product/ProductDetailsModal";
 
 interface Product {
   id: string;
@@ -137,6 +138,8 @@ export function ProductTable({
   const [categories, setCategories] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const itemsPerPage = 8;
 
@@ -219,6 +222,16 @@ export function ProductTable({
       fetchProducts(newPage, selectedCategory);
       setDeleting(false);
     }, 500);
+  };
+
+  const handleActionClick = (product: Product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
   };
 
   const isAllSelected =
@@ -376,8 +389,12 @@ export function ProductTable({
                       </div>
                     </td>
                     <td className="p-4">
-                      <Button variant="ghost" size="sm">
-                        <ArrowRight className="h-4 w-4" />
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => handleActionClick(product)}
+                      >
+                        <ArrowUpRight className="h-4 w-4" />
                       </Button>
                     </td>
                   </tr>
@@ -396,6 +413,13 @@ export function ProductTable({
           onPageChange={setCurrentPage}
         />
       )}
+
+      {/* Product Details Modal */}
+      <ProductDetailsModal
+        product={selectedProduct}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 }
