@@ -128,7 +128,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       )}
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-border relative">
+      <div className="h-20 flex items-center justify-between p-4 border-border relative">
         <div
           className={cn(
             "w-16 h-16 rounded-lg flex items-center justify-center text-white font-bold text-sm mx-auto",

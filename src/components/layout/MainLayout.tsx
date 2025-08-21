@@ -17,16 +17,21 @@ function MainLayout() {
         isCollapsed={isCollapsed}
         setIsCollapsed={setIsCollapsed}
       />
-      <div className="flex-1 flex flex-col">
+      <div className={cn("flex-1 flex flex-col")}>
         <div
           className={cn(
-            "fixed right-0 left-0 z-10",
+            "fixed right-0 left-0 z-10 transition-all duration-300",
             isCollapsed ? "ml-16" : "ml-64"
           )}
         >
           <Header />
         </div>
-        <main className={cn("mt-20", isCollapsed ? "ml-16" : "ml-64")}>
+        <main
+          className={cn(
+            "mt-20 transition-all duration-300",
+            isCollapsed ? "ml-16" : "ml-64"
+          )}
+        >
           <Outlet />
         </main>
       </div>
