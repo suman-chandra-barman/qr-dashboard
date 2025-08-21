@@ -14,8 +14,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { ForgotPasswordModal } from "./ForgotPasswordModal";
-import { Link } from "react-router";
+import { ForgotPasswordModal } from "../setting/ForgotPasswordModal";
+import { useNavigate } from "react-router";
 
 const changePasswordSchema = z
   .object({
@@ -45,8 +45,11 @@ export function ChangePasswordModal() {
     },
   });
 
+  const navigate = useNavigate();
+
   const onSubmit = async (data: ChangePassword) => {
     try {
+      console.log("Submitting password change:", data);
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -55,6 +58,7 @@ export function ChangePasswordModal() {
         description: "Password Updated",
       });
 
+      navigate("/settings");
       // Reset the form after successful submission
       form.reset();
     } catch (error) {
@@ -66,16 +70,27 @@ export function ChangePasswordModal() {
     }
   };
 
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
+
   return (
     <div className=" min-h-screen bg-gray-50 p-4">
       <div className="max-w-md mx-auto">
         {/* Main Content */}
         <div className="bg-white rounded-lg border p-6 ">
           <div className="flex items-center gap-3 mb-6">
-            <Button variant="ghost" size="sm" className="p-0 h-auto">
-             <Link to="/settings">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="p-0 h-auto mr-3"
+              onClick={handleBack}
+            >
               <ArrowLeft className="h-5 w-5" />
-             </Link>
             </Button>
             <h1 className="text-xl font-semibold text-gray-900">
               Change Password

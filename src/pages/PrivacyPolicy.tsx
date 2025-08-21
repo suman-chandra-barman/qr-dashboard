@@ -9,7 +9,7 @@ function PrivacyPolicyPage() {
 
   useEffect(() => {
     // Load content from localStorage or use default
-    const savedContent = localStorage.getItem('privacyPolicyContent');
+    const savedContent = localStorage.getItem("privacyPolicyContent");
     if (savedContent) {
       setContent(savedContent);
     } else {
@@ -19,11 +19,15 @@ function PrivacyPolicyPage() {
   }, []);
 
   const handleEdit = () => {
-    navigate('/settings/privacy-policy/edit');
+    navigate("/settings/privacy-policy/edit");
   };
 
   const handleBack = () => {
-    navigate('/settings');
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
   };
 
   return (
@@ -31,16 +35,23 @@ function PrivacyPolicyPage() {
       <div>
         <div className="p-6 bg-white rounded-lg">
           <div className="flex items-center gap-3 mb-6">
-            <Button variant="ghost" size="sm" className="p-0 h-auto" onClick={handleBack}>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="p-0 h-auto"
+              onClick={handleBack}
+            >
               <ArrowLeft className="h-5 w-5" />
             </Button>
-            <h2 className="text-xl font-semibold text-gray-900">Privacy Policy</h2>
+            <h2 className="text-xl font-semibold text-gray-900">
+              Privacy Policy
+            </h2>
           </div>
           <div className="text-gray-700 leading-relaxed mb-8 min-h-[400px]">
             {content}
           </div>
           <div className="mt-6 text-end">
-            <Button 
+            <Button
               onClick={handleEdit}
               className="w-52 bg-yellow-400 hover:bg-yellow-500 text-black font-medium h-12 rounded-full"
             >

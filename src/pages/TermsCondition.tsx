@@ -23,37 +23,39 @@ function TermsConditionPage() {
   };
 
   const handleBack = () => {
-    navigate("/settings");
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
   };
 
   return (
     <div className="h-full bg-gray-50 p-6">
-      <div>
-        <div className="p-6 bg-white rounded-lg">
-          <div className="flex items-center gap-3 mb-6">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="p-0 h-auto"
-              onClick={handleBack}
-            >
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-            <h2 className="text-xl font-semibold text-gray-900">
-              Terms & Condition
-            </h2>
-          </div>
-          <div className="text-gray-700 leading-relaxed mb-8 min-h-[400px]">
-            {content}
-          </div>
-          <div className="mt-6 text-end">
-            <Button
-              onClick={handleEdit}
-              className="w-52 bg-yellow-400 hover:bg-yellow-500 text-black font-medium h-12 rounded-full"
-            >
-              Edit
-            </Button>
-          </div>
+      <div className="p-6 bg-white rounded-lg">
+        <div className="flex items-center gap-3 mb-6">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="p-0 h-auto"
+            onClick={handleBack}
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </Button>
+          <h2 className="text-xl font-semibold text-gray-900">
+            Terms & Condition
+          </h2>
+        </div>
+        <div className="text-gray-700 leading-relaxed mb-8 min-h-[400px]">
+          {content}
+        </div>
+        <div className="mt-6 text-end">
+          <Button
+            onClick={handleEdit}
+            className="w-52 bg-yellow-400 hover:bg-yellow-500 text-black font-medium h-12 rounded-full"
+          >
+            Edit
+          </Button>
         </div>
       </div>
     </div>

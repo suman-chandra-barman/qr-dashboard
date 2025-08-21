@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import { ArrowLeft } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "../components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const EditAboutUsPage: React.FC = () => {
   const navigate = useNavigate();
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
 
   useEffect(() => {
     // Load existing content from localStorage
-    const savedContent = localStorage.getItem('aboutUsContent');
+    const savedContent = localStorage.getItem("aboutUsContent");
     if (savedContent) {
       setContent(savedContent);
     } else {
@@ -23,38 +23,53 @@ const EditAboutUsPage: React.FC = () => {
 
   const handleUpdate = () => {
     // Save content to localStorage
-    localStorage.setItem('aboutUsContent', content);
+    localStorage.setItem("aboutUsContent", content);
     // Navigate back to the view page
-    navigate('/settings/about-us');
+    navigate("/settings/about-us");
   };
 
   const handleBack = () => {
-    navigate('/settings/about-us');
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
   };
-
   const modules = {
     toolbar: [
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'script': 'sub'}, { 'script': 'super' }],
-      [{ 'indent': '-1'}, { 'indent': '+1' }],
-      [{ 'direction': 'rtl' }],
-      [{ 'color': [] }, { 'background': [] }],
-      [{ 'font': [] }],
-      [{ 'align': [] }],
-      ['link', 'image', 'video'],
-      ['clean']
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ script: "sub" }, { script: "super" }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      [{ direction: "rtl" }],
+      [{ color: [] }, { background: [] }],
+      [{ font: [] }],
+      [{ align: [] }],
+      ["link", "image", "video"],
+      ["clean"],
     ],
   };
 
   const formats = [
-    'header', 'font', 'size',
-    'bold', 'italic', 'underline', 'strike', 'blockquote',
-    'list', 'bullet', 'indent',
-    'link', 'image', 'video',
-    'color', 'background',
-    'align', 'script'
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "video",
+    "color",
+    "background",
+    "align",
+    "script",
   ];
 
   return (
@@ -62,12 +77,19 @@ const EditAboutUsPage: React.FC = () => {
       <div>
         <div className="p-6 bg-white rounded-lg">
           <div className="flex items-center gap-3 mb-6">
-            <Button variant="ghost" size="sm" className="p-0 h-auto" onClick={handleBack}>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="p-0 h-auto"
+              onClick={handleBack}
+            >
               <ArrowLeft className="h-5 w-5" />
             </Button>
-            <h2 className="text-xl font-semibold text-gray-900">Edit About Us</h2>
+            <h2 className="text-xl font-semibold text-gray-900">
+              Edit About Us
+            </h2>
           </div>
-          
+
           <div className="mb-6">
             <ReactQuill
               theme="snow"
@@ -76,12 +98,12 @@ const EditAboutUsPage: React.FC = () => {
               modules={modules}
               formats={formats}
               className="mb-6"
-              style={{ minHeight: '400px' }}
+              style={{ minHeight: "400px" }}
             />
           </div>
-          
+
           <div className="flex justify-end">
-            <Button 
+            <Button
               onClick={handleUpdate}
               className="w-52 bg-yellow-400 hover:bg-yellow-500 text-black font-medium h-12 rounded-full"
             >

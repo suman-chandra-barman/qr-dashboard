@@ -65,8 +65,12 @@ export function ResetPasswordPage() {
     }
   };
 
-  const handleBack = () => {
-    navigate(-1); // Navigate to the previous page
+    const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
   };
 
   return (

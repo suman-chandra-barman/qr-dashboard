@@ -29,7 +29,11 @@ const EditTermsConditionPage: React.FC = () => {
   };
 
   const handleBack = () => {
-    navigate("/settings/terms-condition");
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
   };
 
   const modules = {

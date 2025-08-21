@@ -1,8 +1,6 @@
 import App from "@/App";
 import Dashboard from "@/components/dashboard/Dashboard";
-import { ChangePasswordModal } from "@/components/setting/ChangePasswordModal";
-import EditPersonalInformation from "@/components/setting/EditPersonalInformation";
-import PersonalInformation from "@/components/setting/PersonalInformation";
+import { ChangePasswordModal } from "@/components/modals/ChangePasswordModal";
 import AboutUsPage from "@/pages/AboutUs";
 import SettingsPage from "@/pages/AccoutAndSetting";
 import EditAboutUsPage from "@/pages/EditAboutUs";
@@ -19,6 +17,8 @@ import { createBrowserRouter } from "react-router-dom";
 import ProductsPage from "@/pages/ProductsPage";
 import CategoriesPage from "@/pages/CategoriesPage";
 import CustomersPage from "@/pages/CustomersPage";
+import PersonalInformationPage from "@/pages/PersonalInformationPage";
+import EditPersonalInformationPage from "@/pages/EditPersonalInformationPage";
 
 const router = createBrowserRouter([
   {
@@ -48,11 +48,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/settings/personal-information",
-        element: <PersonalInformation />,
+        element: <PersonalInformationPage />,
       },
       {
         path: "/settings/personal-information/edit",
-        element: <EditPersonalInformation />,
+        element: <EditPersonalInformationPage />,
       },
       {
         path: "/settings/change-password",

@@ -7,7 +7,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 
 // Define schema using Zod
 const formSchema = z.object({
@@ -17,7 +23,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const EditPersonalInformation: React.FC = () => {
+const EditPersonalInformationPage: React.FC = () => {
   const navigate = useNavigate(); // Use navigate for routing in React
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -36,6 +42,13 @@ const EditPersonalInformation: React.FC = () => {
       phone: userData.phone,
     },
   });
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
 
   const handleImageClick = () => {
     fileInputRef.current?.click();
@@ -70,10 +83,17 @@ const EditPersonalInformation: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="p-6">
         <div className="flex items-center gap-3 mb-8 border p-3 bg-white rounded-xl">
-          <button onClick={() => navigate(-1)} className="text-gray-600 hover:text-gray-900">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="p-0 h-auto mr-3"
+            onClick={handleBack}
+          >
             <ArrowLeft className="h-5 w-5" />
-          </button>
-          <h1 className="text-lg font-medium text-gray-900">Personal Information</h1>
+          </Button>
+          <h1 className="text-lg font-medium text-gray-900">
+            Personal Information
+          </h1>
         </div>
 
         <div className="bg-white rounded-lg p-6 shadow-sm">
@@ -83,9 +103,17 @@ const EditPersonalInformation: React.FC = () => {
                 <div className="bg-white p-8 rounded-lg shadow-sm flex-shrink-0">
                   <div className="flex flex-col items-center space-y-4">
                     <div className="relative">
-                      <Avatar className="h-20 w-20 cursor-pointer" onClick={handleImageClick}>
-                        <AvatarImage src={userData.profileImage || "/placeholder.svg"} alt={userData.name} />
-                        <AvatarFallback className="text-lg">{userData.name.charAt(0).toUpperCase()}</AvatarFallback>
+                      <Avatar
+                        className="h-20 w-20 cursor-pointer"
+                        onClick={handleImageClick}
+                      >
+                        <AvatarImage
+                          src={userData.profileImage || "/placeholder.svg"}
+                          alt={userData.name}
+                        />
+                        <AvatarFallback className="text-lg">
+                          {userData.name.charAt(0).toUpperCase()}
+                        </AvatarFallback>
                       </Avatar>
                       <button
                         type="button"
@@ -102,7 +130,9 @@ const EditPersonalInformation: React.FC = () => {
                         className="hidden"
                       />
                     </div>
-                    <h2 className="text-xl font-medium text-gray-900 text-center">{userData.name}</h2>
+                    <h2 className="text-xl font-medium text-gray-900 text-center">
+                      {userData.name}
+                    </h2>
                   </div>
                 </div>
 
@@ -150,7 +180,10 @@ const EditPersonalInformation: React.FC = () => {
                   />
 
                   <div className="pt-4 flex justify-end">
-                    <Button type="submit" className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium">
+                    <Button
+                      type="submit"
+                      className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium"
+                    >
                       Save Change
                       <Save className="ml-2 h-4 w-4" />
                     </Button>
@@ -165,4 +198,4 @@ const EditPersonalInformation: React.FC = () => {
   );
 };
 
-export default EditPersonalInformation;
+export default EditPersonalInformationPage;

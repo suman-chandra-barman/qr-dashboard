@@ -3,9 +3,10 @@ import { ArrowLeft, User, Mail, Phone, Edit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
-export default function PersonalInformation() {
+export default function PersonalInformationPage() {
+  const navigate = useNavigate();
   // Mock user data - replace with actual user data from your state management
   const [userData] = useState({
     name: "Shoron",
@@ -14,14 +15,27 @@ export default function PersonalInformation() {
     profileImage: "/placeholder.svg?height=80&width=80",
   });
 
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="p-6">
         {/* Header */}
         <div className="flex items-center gap-3 mb-8 border p-3 bg-white rounded-xl">
-          <Link to="/settings" className="text-gray-600 hover:text-gray-900">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="p-0 h-auto mr-3"
+            onClick={handleBack}
+          >
             <ArrowLeft className="h-5 w-5" />
-          </Link>
+          </Button>
           <h1 className="text-lg font-medium text-gray-900">
             Personal Information
           </h1>
