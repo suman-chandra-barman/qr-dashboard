@@ -14,8 +14,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { ForgotPasswordModal } from "../setting/ForgotPasswordModal";
 import { useNavigate } from "react-router";
+import { ForgotPasswordModal } from "@/components/modals/ForgotPasswordModal";
 
 const changePasswordSchema = z
   .object({
@@ -30,7 +30,7 @@ const changePasswordSchema = z
 
 type ChangePassword = z.infer<typeof changePasswordSchema>;
 
-export function ChangePasswordModal() {
+export function ChangePasswordPage() {
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);

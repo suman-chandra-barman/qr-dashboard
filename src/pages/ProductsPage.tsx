@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ProductTable } from "@/components/dashboard/ProductTable";
+import { ProductTable } from "@/components/tables/ProductTable";
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");

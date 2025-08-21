@@ -1,10 +1,10 @@
 import { Plus } from "lucide-react";
-import ProductCard from "../components/dashboard/ProductCard";
+import ProductCard from "../components/cards/ProductCard";
 import { useState } from "react";
 import { Button } from "../components/ui/button";
-import { AddProductModal } from "../components/dashboard/AddProductModal";
+import { AddProductModal } from "../components/modals/AddProductModal";
 import img from "../assets/hat.png";
-import { Pagination } from "@/components/common/Pagination";
+import { Pagination } from "@/components/pagination/Pagination";
 
 export interface TProduct {
   id: string;

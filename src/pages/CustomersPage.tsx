@@ -3,7 +3,7 @@ import { Trash2, Loader2, ArrowUpRight } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "../components/ui/button";
 import { Checkbox } from "../components/ui/checkbox";
-import { Pagination } from "../components/common/Pagination";
+import { Pagination } from "../components/pagination/Pagination";
 import { DetailsModal } from "@/components/modals/DetailsModal";
 
 // Mock customer data

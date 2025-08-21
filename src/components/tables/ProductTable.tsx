@@ -3,7 +3,7 @@ import { Checkbox } from "../ui/checkbox";
 import { Button } from "../ui/button";
 import { ArrowUpRight, Trash2, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { Pagination } from "../common/Pagination";
+import { Pagination } from "../pagination/Pagination";
 import { DetailsModal } from "../modals/DetailsModal";
 
 interface Product {

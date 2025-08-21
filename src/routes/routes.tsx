@@ -1,38 +1,38 @@
 import App from "@/App";
-import Dashboard from "@/components/dashboard/Dashboard";
-import { ChangePasswordModal } from "@/components/modals/ChangePasswordModal";
-import AboutUsPage from "@/pages/AboutUs";
-import SettingsPage from "@/pages/AccoutAndSetting";
-import EditAboutUsPage from "@/pages/EditAboutUs";
-import EditPrivacyPolicyPage from "@/pages/EditPrivacyPolicy";
-import EditTermsCondition from "@/pages/EditTermsCondition";
+import AboutUsPage from "@/pages/AboutUsPage";
+import SettingsPage from "@/pages/SettingPage";
+import EditAboutUsPage from "@/pages/EditAboutUsPage";
+import EditPrivacyPolicyPage from "@/pages/EditPrivacyPolicyPage";
 import ForgotPasswordPage from "@/pages/FotgotPasswordPage";
-import NotFound from "@/pages/NotFound";
 import OTPVerificationPage from "@/pages/OTPVerificationPage";
-import PrivacyPolicyPage from "@/pages/PrivacyPolicy";
 import { ResetPasswordPage } from "@/pages/ResetPasswordPage";
 import SignInPage from "@/pages/SigninPage";
-import TermsCondition from "@/pages/TermsCondition";
 import { createBrowserRouter } from "react-router-dom";
 import ProductsPage from "@/pages/ProductsPage";
 import CategoriesPage from "@/pages/CategoriesPage";
 import CustomersPage from "@/pages/CustomersPage";
 import PersonalInformationPage from "@/pages/PersonalInformationPage";
 import EditPersonalInformationPage from "@/pages/EditPersonalInformationPage";
+import NotFoundPage from "@/pages/NotFoundPage";
+import DashboardPage from "@/pages/DashboardPage";
+import { ChangePasswordPage } from "@/pages/ChangePasswordPage";
+import TermsConditionPage from "@/pages/TermsConditionPage";
+import EditTermsConditionPage from "@/pages/EditTermsConditionPage";
+import PrivacyPolicyPage from "@/pages/PrivacyPolicyPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <NotFound />,
+    errorElement: <NotFoundPage />,
     children: [
       {
         path: "/",
-        element: <Dashboard />,
+        element: <DashboardPage />,
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <DashboardPage />,
       },
       {
         path: "/categories",
@@ -56,15 +56,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/settings/change-password",
-        element: <ChangePasswordModal />,
+        element: <ChangePasswordPage />,
       },
       {
         path: "/settings/terms-condition",
-        element: <TermsCondition />,
+        element: <TermsConditionPage />,
       },
       {
         path: "/settings/terms-condition/edit",
-        element: <EditTermsCondition />,
+        element: <EditTermsConditionPage />,
       },
       {
         path: "/settings/privacy-policy",

@@ -1,7 +1,4 @@
-"use client";
-
 import type React from "react";
-
 import { useState } from "react";
 import { Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -89,7 +86,7 @@ export function AddProductModal({
 
   const handleSave = () => {
     if (formData.category && formData.name && formData.price) {
-        console.log("formData:", formData);
+      console.log("formData:", formData);
       onSave(formData);
       // Reset form
       setFormData({
@@ -232,7 +229,12 @@ export function AddProductModal({
           <Button
             onClick={handleSave}
             className="w-full rounded-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium"
-            disabled={!formData.category || !formData.name || !formData.price || !selectedImage}
+            disabled={
+              !formData.category ||
+              !formData.name ||
+              !formData.price ||
+              !selectedImage
+            }
           >
             Save
           </Button>

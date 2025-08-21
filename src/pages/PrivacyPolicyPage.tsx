@@ -1,11 +1,26 @@
 import { ArrowLeft } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "../components/ui/button";
+import { useNavigate } from "react-router";
 
-function PrivacyPolicy() {
+function PrivacyPolicyPage() {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
   return (
     <div className="p-6 bg-white rounded-lg">
       <div className="flex items-center gap-3 mb-6">
-        <Button variant="ghost" size="sm" className="p-0 h-auto">
+        <Button
+          variant="ghost"
+          size="sm"
+          className="p-0 h-auto mr-3"
+          onClick={handleBack}
+        >
           <ArrowLeft className="h-5 w-5" />
         </Button>
         <h2 className="text-xl font-semibold text-gray-900">Privacy Policy</h2>
@@ -70,4 +85,4 @@ function PrivacyPolicy() {
   );
 }
 
-export default PrivacyPolicy;
+export default PrivacyPolicyPage;

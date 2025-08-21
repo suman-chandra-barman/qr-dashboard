@@ -28,7 +28,7 @@ const StatCard: React.FC<StatCardProps> = ({
       </CardHeader>
       <CardContent>
         <div className="flex justify-between items-center">
-          <div className={`text-2xl font-bold ${title === "Total Product" ? "text-white" : "text-gray-900"}`}>${value}</div>
+          <div className={`text-2xl font-bold ${title === "Total Product" ? "text-white" : "text-gray-900"}`}>{value}</div>
           <div className="text-sm mt-1">
             <div className="flex items-center gap-1 justify-end">
               {trend === "up" ? (
@@ -57,15 +57,15 @@ const StatsCards: React.FC = () => {
     <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
       <StatCard
         title="Total Product"
-        value="5,000"
-        change="-1.1%"
-        trend="down"
+        value="$5000"
+        change="10.1%"
+        trend="up"
         subtitle="from last week"
         className="hover:shadow-md transition-shadow justify-between bg-[#003366FC]"
       />
       <StatCard
         title="Total Customer"
-        value="5,000"
+        value="5000"
         change="+1.6%"
         trend="up"
         subtitle="from last week"
