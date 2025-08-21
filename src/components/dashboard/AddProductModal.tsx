@@ -231,7 +231,7 @@ export function AddProductModal({
           {/* Save Button */}
           <Button
             onClick={handleSave}
-            className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium"
+            className="w-full rounded-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium"
             disabled={!formData.category || !formData.name || !formData.price || !selectedImage}
           >
             Save

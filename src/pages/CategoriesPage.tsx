@@ -1,10 +1,10 @@
-import { Search, Plus } from "lucide-react";
-import ProductCard from "./ProductCard";
-import { Input } from "../ui/input";
+import { Plus } from "lucide-react";
+import ProductCard from "../components/dashboard/ProductCard";
 import { useState } from "react";
-import { Button } from "../ui/button";
-import { AddProductModal } from "./AddProductModal";
-import img from "../../assets/hat.png";
+import { Button } from "../components/ui/button";
+import { AddProductModal } from "../components/dashboard/AddProductModal";
+import img from "../assets/hat.png";
+import { Pagination } from "@/components/common/Pagination";
 
 export interface TProduct {
   id: string;
@@ -74,47 +74,99 @@ const productData: TProduct[] = [
     price: 22.5,
     image: img,
   },
+  {
+    id: "11",
+    name: "Comfortable Memory Foam Pillow",
+    price: 39.99,
+    image: img,
+  },
+  {
+    id: "12",
+    name: "Stylish Sunglasses with Polarized Lenses",
+    price: 55.0,
+    image: img,
+  },
+  {
+    id: "13",
+    name: "Compact Digital Camera with HD Video Recording",
+    price: 299.99,
+    image: img,
+  },
+  {
+    id: "14",
+    name: "Eco-Friendly Reusable Grocery Bags, Set of 5",
+    price: 18.0,
+    image: img,
+  },
+  {
+    id: "15",
+    name: "Insulated Stainless Steel Coffee Thermos",
+    price: 29.99,
+    image: img,
+  },
+  {
+    id: "16",
+    name: "Water-Resistant Running Shoes",
+    price: 89.5,
+    image: img,
+  },
+  {
+    id: "17",
+    name: "Smartphone with 128GB Storage",
+    price: 349.0,
+    image: img,
+  },
+  {
+    id: "18",
+    name: "Electric Toothbrush with Smart Timer",
+    price: 49.99,
+    image: img,
+  },
+  {
+    id: "19",
+    name: "Luxury Scented Candle in Glass Jar",
+    price: 25.0,
+    image: img,
+  },
 ];
 
-const Categories = () => {
-  console.log("hi");
-  const [searchQuery, setSearchQuery] = useState("");
+const CategoriesPage = () => {
   const [showAddModal, setShowAddModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Show 8 products per page
+
+  const totalPages = Math.ceil(productData.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentProducts = productData.slice(startIndex, endIndex);
 
   const handleSaveProduct = (productData: any) => {
     console.log("New product:", productData);
     // Implement your API call to save the product here
   };
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className="p-6 bg-gray-50">
-      <div className="mb-6">
-        <h1 className="text-2xl font-semibold text-gray-900 mb-2">Product</h1>
-        <div className="flex items-center gap-2 text-sm text-gray-500">
-          <span>Dashboard</span>
-          <span>›</span>
-          <span className="text-blue-600">Upload</span>
-        </div>
-      </div>
-
       {/* Search and Category Tabs */}
       <div className="py-4 flex justify-between items-center">
         <div className="flex items-center gap-4 mb-4">
-          <div className="relative flex justify-between">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-            <Input
-              placeholder="Search for id, name product"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 w-[400px]"
-            />
+          <div>
+            <div className="flex items-center gap-2 text-sm text-gray-500">
+              <span>Dashboard</span>
+              <span>›</span>
+              <span className="text-blue-600">Categories</span>
+            </div>
           </div>
         </div>
 
         <div className="flex gap-2">
           <Button
             onClick={() => setShowAddModal(true)}
-            className="bg-[#FFD700] text-[#003366] hover:bg-amber-400"
+            className="bg-[#FFD700] text-[#003366] hover:bg-amber-400 rounded-full"
           >
             Add Product <Plus className="w-4 h-4" />
           </Button>
@@ -123,7 +175,7 @@ const Categories = () => {
       <div
         className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 `}
       >
-        {productData.map((product) => (
+        {currentProducts.map((product) => (
           <ProductCard
             key={product.id}
             id={product.id}
@@ -134,6 +186,17 @@ const Categories = () => {
           />
         ))}
       </div>
+
+      {totalPages > 1 && (
+        <div className="mt-8 flex justify-center">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </div>
+      )}
+
       {/* AddProductModal component */}
       <AddProductModal
         open={showAddModal}
@@ -144,4 +207,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default CategoriesPage;

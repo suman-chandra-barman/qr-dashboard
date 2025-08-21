@@ -1,24 +1,24 @@
-import App from "@/App"
-import CustomerDashboard from "@/components/dashboard/CustomerDeshboard"
-import Dashboard from "@/components/dashboard/Dashboard"
-import ProductUploads from "@/components/dashboard/Categories"
-import { ChangePasswordModal } from "@/components/setting/ChangePasswordModal"
-import EditPersonalInformation from "@/components/setting/EditPersonalInformation"
-import PersonalInformation from "@/components/setting/PersonalInformation"
-import AboutUsPage from "@/pages/AboutUs"
-import SettingsPage from "@/pages/AccoutAndSetting"
-import EditAboutUsPage from "@/pages/EditAboutUs"
-import EditPrivacyPolicyPage from "@/pages/EditPrivacyPolicy"
-import EditTermsCondition from "@/pages/EditTermsCondition"
-import ForgotPasswordPage from "@/pages/FotgotPasswordPage"
-import NotFound from "@/pages/NotFound"
-import OTPVerificationPage from "@/pages/OTPVerificationPage"
-import PrivacyPolicyPage from "@/pages/PrivacyPolicy"
-import { ResetPasswordPage } from "@/pages/ResetPasswordPage"
-import SignInPage from "@/pages/SigninPage"
-import TermsCondition from "@/pages/TermsCondition"
-import { createBrowserRouter } from "react-router-dom"
-import ProductsPage from "@/pages/ProductsPage"
+import App from "@/App";
+import CustomerDashboard from "@/components/dashboard/CustomerDeshboard";
+import Dashboard from "@/components/dashboard/Dashboard";
+import { ChangePasswordModal } from "@/components/setting/ChangePasswordModal";
+import EditPersonalInformation from "@/components/setting/EditPersonalInformation";
+import PersonalInformation from "@/components/setting/PersonalInformation";
+import AboutUsPage from "@/pages/AboutUs";
+import SettingsPage from "@/pages/AccoutAndSetting";
+import EditAboutUsPage from "@/pages/EditAboutUs";
+import EditPrivacyPolicyPage from "@/pages/EditPrivacyPolicy";
+import EditTermsCondition from "@/pages/EditTermsCondition";
+import ForgotPasswordPage from "@/pages/FotgotPasswordPage";
+import NotFound from "@/pages/NotFound";
+import OTPVerificationPage from "@/pages/OTPVerificationPage";
+import PrivacyPolicyPage from "@/pages/PrivacyPolicy";
+import { ResetPasswordPage } from "@/pages/ResetPasswordPage";
+import SignInPage from "@/pages/SigninPage";
+import TermsCondition from "@/pages/TermsCondition";
+import { createBrowserRouter } from "react-router-dom";
+import ProductsPage from "@/pages/ProductsPage";
+import CategoriesPage from "@/pages/CategoriesPage";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/categories",
-        element: <ProductUploads />,
+        element: <CategoriesPage />,
       },
       {
         path: "/customers",
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <ProductsPage />,
-      }
+      },
     ],
   },
   {
@@ -104,6 +104,6 @@ const router = createBrowserRouter([
     path: "reset-password",
     element: <ResetPasswordPage />,
   },
-])
+]);
 
-export default router
+export default router;
