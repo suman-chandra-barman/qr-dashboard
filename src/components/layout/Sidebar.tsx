@@ -18,6 +18,8 @@ interface SidebarProps {
   className?: string;
   activeItem: string;
   onItemClick: (item: string) => void;
+  isCollapsed?: boolean;
+  setIsCollapsed: (collapsed: boolean) => void;
 }
 
 interface NavItem {
@@ -61,9 +63,10 @@ const Sidebar: React.FC<SidebarProps> = ({
   className,
   activeItem,
   onItemClick,
+  isCollapsed,
+  setIsCollapsed,
 }) => {
   const navigate = useNavigate();
-  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const NavItemComponent = ({ item }: { item: NavItem }) => {
     const isActive = activeItem === item.href;
@@ -126,7 +129,12 @@ const Sidebar: React.FC<SidebarProps> = ({
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-border relative">
-        <div className="w-16 h-16 rounded-lg flex items-center justify-center text-white font-bold text-sm mx-auto">
+        <div
+          className={cn(
+            "w-16 h-16 rounded-lg flex items-center justify-center text-white font-bold text-sm mx-auto",
+            isCollapsed ? "hidden" : ""
+          )}
+        >
           <img src={logo} alt="Logo" className="w-full" />
         </div>
         <Button
@@ -134,7 +142,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           size="sm"
           onClick={() => setIsCollapsed(!isCollapsed)}
           className={cn(
-            "h-8 w-8 p-0 absolute -right-4 cursor-pointer bg-gray-100 hover:bg-gray-200",
+            "h-8 w-8 p-0 cursor-pointer bg-gray-100 hover:bg-gray-200",
             isCollapsed && "mx-auto mt-2"
           )}
         >
@@ -155,7 +163,8 @@ const Sidebar: React.FC<SidebarProps> = ({
       {/* User Profile */}
       <div className="p-4 border-t border-border text-red-400">
         <Button variant="outline" className="w-full text-red-400">
-          <LogOut className={`${isCollapsed ? "h-5 w-5" : "h-4 w-4"}`} /> {!isCollapsed && <span >Log out</span>}
+          <LogOut className={`${isCollapsed ? "h-5 w-5" : "h-4 w-4"}`} />{" "}
+          {!isCollapsed && <span>Log out</span>}
         </Button>
       </div>
     </div>

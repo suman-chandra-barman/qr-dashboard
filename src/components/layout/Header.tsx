@@ -6,7 +6,7 @@ import { Bell } from "lucide-react";
 
 const Header: React.FC = () => {
   return (
-    <header className="h-20 border-b border-border bg-background px-6 flex justify-end items-center gap-6">
+    <header className={`h-20 border-b border-border bg-gray-50 px-6 flex justify-end items-center gap-6`}>
       {/* User Section */}
       <div className="flex items-center gap-4">
         <Button variant="ghost" size="sm" className="relative">
