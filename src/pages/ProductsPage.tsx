@@ -1,15 +1,13 @@
-"use client"
-
-import { useState } from "react"
-import { ProductTable } from "@/components/dashboard/ProductTable"
+import { useState } from "react";
+import { ProductTable } from "@/components/dashboard/ProductTable";
 
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const getBreadcrumbCategory = () => {
-    if (selectedCategory === "all") return "All Products"
-    return selectedCategory
-  }
+    if (selectedCategory === "all") return "All Products";
+    return selectedCategory;
+  };
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
@@ -23,12 +21,17 @@ export default function ProductsPage() {
           <span>›</span>
           <span>Product</span>
           <span>›</span>
-          <span className="text-blue-600 font-medium">{getBreadcrumbCategory()}</span>
+          <span className="text-blue-600 font-medium">
+            {getBreadcrumbCategory()}
+          </span>
         </nav>
       </div>
 
       {/* Product Table */}
-      <ProductTable selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} />
+      <ProductTable
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+      />
     </div>
-  )
+  );
 }

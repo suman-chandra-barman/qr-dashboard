@@ -26,7 +26,7 @@ function MainLayout() {
         >
           <Header />
         </div>
-        <main className={cn("mt-20", isCollapsed ? "ml-16" : "ml-64")}>
+        <main className={cn("mt-20 overflow-y-auto", isCollapsed ? "ml-16" : "ml-64")}>
           <Outlet />
         </main>
       </div>

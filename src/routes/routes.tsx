@@ -1,5 +1,4 @@
 import App from "@/App";
-import CustomerDashboard from "@/components/dashboard/CustomerDeshboard";
 import Dashboard from "@/components/dashboard/Dashboard";
 import { ChangePasswordModal } from "@/components/setting/ChangePasswordModal";
 import EditPersonalInformation from "@/components/setting/EditPersonalInformation";
@@ -19,6 +18,7 @@ import TermsCondition from "@/pages/TermsCondition";
 import { createBrowserRouter } from "react-router-dom";
 import ProductsPage from "@/pages/ProductsPage";
 import CategoriesPage from "@/pages/CategoriesPage";
+import CustomersPage from "@/pages/CustomersPage";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/customers",
-        element: <CustomerDashboard />,
+        element: <CustomersPage />,
       },
       {
         path: "/settings",
